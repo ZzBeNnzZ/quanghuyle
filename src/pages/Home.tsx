@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       <main className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-midnight">
         {/* Animated background elements */}
         <div className="absolute inset-0 opacity-20">
@@ -22,17 +22,17 @@ const Home = () => {
                 Computer Science Student
               </span>
             </div>
-            
+
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-6 tracking-tight">
               Quang Huy Le
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-blue-100 mb-8 font-body leading-relaxed max-w-3xl mx-auto">
-              Software Developer specializing in <span className="text-gold font-semibold">High-Performance Computing</span>, 
-              <span className="text-gold font-semibold"> AI Integration</span>, and 
+              Software Developer specializing in <span className="text-gold font-semibold">High-Performance Computing</span>,
+              <span className="text-gold font-semibold"> AI Integration</span>, and
               <span className="text-gold font-semibold"> Full-Stack Development</span>
             </p>
-            
+
             <p className="text-lg text-blue-200/80 mb-12 font-body max-w-2xl mx-auto">
               Texas A&M University • GPA: 3.80 • Available for Software Engineering roles
             </p>
@@ -51,7 +51,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
+                  className="border-2 border-white/30 text-accent hover:bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold"
                 >
                   Get In Touch
                 </Button>
@@ -87,11 +87,11 @@ const Home = () => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
             <div className="w-1.5 h-3 bg-white/50 rounded-full" />
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );
