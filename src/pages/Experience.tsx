@@ -47,7 +47,6 @@ const experiences = [
 const Experience = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="container mx-auto px-6 py-32">
         <div className="max-w-5xl mx-auto">

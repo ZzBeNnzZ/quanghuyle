@@ -44,7 +44,6 @@ const contactMethods = [
 const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="container mx-auto px-6 py-32">
         <div className="max-w-4xl mx-auto">

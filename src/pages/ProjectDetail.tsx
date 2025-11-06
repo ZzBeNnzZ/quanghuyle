@@ -13,7 +13,6 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-background">
-        <Navigation />
         <main className="container mx-auto px-6 py-32">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-heading font-bold text-primary mb-6">

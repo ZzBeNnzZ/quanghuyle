@@ -6,7 +6,6 @@ import Navigation from "@/components/Navigation";
 const Home = () => {
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       <main className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-midnight">
         {/* Animated background elements */}

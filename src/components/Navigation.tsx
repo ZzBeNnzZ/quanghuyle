@@ -6,12 +6,13 @@ import { Button } from "./ui/button";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -26,25 +27,6 @@ const Navigation = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    if (location.pathname === path) return;
-    
-    e.preventDefault();
-    
-    // Use View Transitions API if available, otherwise fallback to timeout
-    if (document.startViewTransition) {
-      document.startViewTransition(() => {
-        navigate(path);
-      });
-    } else {
-      // Fallback: brief delay for transition
-      setTimeout(() => {
-        navigate(path);
-      }, 200);
-    }
-  };
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
@@ -68,7 +50,7 @@ const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  onClick={(e) => handleNavClick(e, item.path)}
+                  // onClick={(e) => handleNavClick(e, item.path)}
                   className={`font-body text-sm font-medium transition-colors duration-300 ease-in-out relative group ${
                     active
                       ? isHome && !isScrolled
@@ -83,8 +65,8 @@ const Navigation = () => {
 
                   <span
                     className={`absolute -bottom-1 left-0 h-0.5 w-full bg-accent origin-left
-              transform transition-transform duration-200 ease-out
-              ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+                    transition-transform duration-300 ease-in-out
+                    transform ${active ? "scale-x-100" : "group-hover:scale-x-100 scale-x-0"}`}
                     style={{ viewTransitionName: `nav-underline-${item.path}` }}
                   />
                 </Link>
@@ -111,7 +93,7 @@ const Navigation = () => {
                 key={item.path}
                 to={item.path}
                 onClick={(e) => {
-                  handleNavClick(e, item.path);
+                  // handleNavClick(e, item.path);
                   setIsMobileMenuOpen(false);
                 }}
                 className={`block py-3 font-body text-sm font-medium transition-smooth ${

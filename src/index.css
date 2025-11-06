@@ -37,18 +37,31 @@ All colors MUST be HSL.
     --ring: 210 80% 60%;
 
     --radius: 0.75rem;
-    
+
     --gold: 45 100% 65%;
     --silver: 0 0% 75%;
-    
-    --gradient-midnight: linear-gradient(135deg, hsl(215 50% 12%), hsl(215 60% 20%));
-    --gradient-sapphire: linear-gradient(135deg, hsl(215 90% 25%), hsl(210 80% 35%));
-    --gradient-luxury: linear-gradient(135deg, hsl(215 50% 15%), hsl(215 60% 25%), hsl(210 80% 30%));
-    
+
+    --gradient-midnight: linear-gradient(
+      135deg,
+      hsl(215 50% 12%),
+      hsl(215 60% 20%)
+    );
+    --gradient-sapphire: linear-gradient(
+      135deg,
+      hsl(215 90% 25%),
+      hsl(210 80% 35%)
+    );
+    --gradient-luxury: linear-gradient(
+      135deg,
+      hsl(215 50% 15%),
+      hsl(215 60% 25%),
+      hsl(210 80% 30%)
+    );
+
     --shadow-elegant: 0 20px 60px -15px hsl(215 50% 15% / 0.4);
     --shadow-glow: 0 0 40px hsl(210 80% 60% / 0.2);
-    
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -95,17 +108,30 @@ All colors MUST be HSL.
     --border: 215 40% 25%;
     --input: 215 40% 25%;
     --ring: 210 80% 60%;
-    
+
     --gold: 45 90% 60%;
     --silver: 0 0% 70%;
-    
-    --gradient-midnight: linear-gradient(135deg, hsl(215 50% 8%), hsl(215 60% 15%));
-    --gradient-sapphire: linear-gradient(135deg, hsl(215 90% 20%), hsl(210 80% 30%));
-    --gradient-luxury: linear-gradient(135deg, hsl(215 50% 10%), hsl(215 60% 18%), hsl(210 80% 25%));
-    
+
+    --gradient-midnight: linear-gradient(
+      135deg,
+      hsl(215 50% 8%),
+      hsl(215 60% 15%)
+    );
+    --gradient-sapphire: linear-gradient(
+      135deg,
+      hsl(215 90% 20%),
+      hsl(210 80% 30%)
+    );
+    --gradient-luxury: linear-gradient(
+      135deg,
+      hsl(215 50% 10%),
+      hsl(215 60% 18%),
+      hsl(210 80% 25%)
+    );
+
     --shadow-elegant: 0 20px 60px -15px hsl(0 0% 0% / 0.6);
     --shadow-glow: 0 0 40px hsl(210 80% 60% / 0.3);
-    
+
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -126,8 +152,13 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-body;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 }
@@ -136,31 +167,36 @@ All colors MUST be HSL.
   .gradient-midnight {
     background: linear-gradient(135deg, hsl(215 50% 12%), hsl(215 60% 20%));
   }
-  
+
   .gradient-sapphire {
     background: linear-gradient(135deg, hsl(215 90% 25%), hsl(210 80% 35%));
   }
-  
+
   .gradient-luxury {
-    background: linear-gradient(135deg, hsl(215 50% 15%), hsl(215 60% 25%), hsl(210 80% 30%));
+    background: linear-gradient(
+      135deg,
+      hsl(215 50% 15%),
+      hsl(215 60% 25%),
+      hsl(210 80% 30%)
+    );
   }
-  
+
   .text-gold {
     color: hsl(45 100% 65%);
   }
-  
+
   .text-silver {
     color: hsl(0 0% 75%);
   }
-  
+
   .shadow-elegant {
     box-shadow: 0 20px 60px -15px hsl(215 50% 15% / 0.4);
   }
-  
+
   .shadow-glow {
     box-shadow: 0 0 40px hsl(210 80% 60% / 0.2);
   }
-  
+
   .transition-smooth {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
