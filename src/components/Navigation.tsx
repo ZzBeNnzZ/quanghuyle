@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -17,6 +17,32 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const startVT = (cb: () => void) =>
+    (document as any).startViewTransition
+      ? (document as any).startViewTransition(cb)
+      : cb();
+
+  const handleNavClick = (
+    e: MouseEvent<HTMLAnchorElement>,
+    nextPath: string
+  ) => {
+    // let modified clicks (new tab, etc.) behave normally
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
+      return;
+
+    e.preventDefault();
+
+    const from = navItems.findIndex((i) => i.path === location.pathname);
+    const to = navItems.findIndex((i) => i.path === nextPath);
+    const dir = to > from ? 1 : -1;
+
+    // optional: expose direction for CSS-based variants
+    document.documentElement.style.setProperty("--dir", String(dir));
+
+    startVT(() => navigate(nextPath, { state: { dir } }));
+    setIsMobileMenuOpen(false);
+  };
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
@@ -30,27 +56,33 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        isScrolled ? "bg-card/95 backdrop-blur-md shadow-elegant" : "bg-transparent"
+        isScrolled || isMobileMenuOpen
+          ? "bg-card/95 backdrop-blur-md shadow-elegant"
+          : "bg-transparent"
       }`}
+      style={{ viewTransitionName: "none" }}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link
             to="/"
-            className={`text-2xl font-heading font-bold ${isHome ? "text-white" : "text-accent"}`}
+            onClick={(e) => handleNavClick(e, "/")}
+            className={`text-2xl font-heading font-bold ${isHome && !isMobileMenuOpen ? "text-white" : "text-accent"}`}
           >
             QH
           </Link>
 
           {/* Desktop Navigation */}
-          <div className={`hidden md:flex items-center gap-8 ${isHome && !isScrolled ? "text-white" : ""}`}>
+          <div
+            className={`hidden md:flex items-center gap-8 ${isHome && !isScrolled ? "text-white" : ""}`}
+          >
             {navItems.map((item) => {
               const active = isActive(item.path);
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  // onClick={(e) => handleNavClick(e, item.path)}
+                  onClick={(e) => handleNavClick(e, item.path)}
                   className={`font-body text-sm font-medium transition-colors duration-300 ease-in-out relative group ${
                     active
                       ? isHome && !isScrolled
@@ -78,7 +110,7 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-accent bg-secondary/80"
             onClick={() => setIsMobileMenuOpen((v) => !v)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -92,12 +124,11 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                onClick={(e) => {
-                  // handleNavClick(e, item.path);
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={(e) => handleNavClick(e, item.path)}
                 className={`block py-3 font-body text-sm font-medium transition-smooth ${
-                  isActive(item.path) ? "text-accent" : "text-foreground hover:text-accent"
+                  isActive(item.path)
+                    ? "text-accent"
+                    : "text-foreground hover:text-accent"
                 }`}
               >
                 {item.name}
