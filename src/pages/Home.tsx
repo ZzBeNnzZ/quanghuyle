@@ -6,7 +6,6 @@ import Navigation from "@/components/Navigation";
 const Home = () => {
   return (
     <div className="min-h-screen">
-
       <main className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-midnight">
         {/* Animated background elements */}
         <div className="absolute inset-0 opacity-20">
@@ -27,14 +26,23 @@ const Home = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-blue-100 mb-8 font-body leading-relaxed max-w-3xl mx-auto">
-              Software Developer specializing in <span className="text-gold font-semibold">High-Performance Computing</span>,
-              <span className="text-gold font-semibold"> AI Integration</span>, and
-              <span className="text-gold font-semibold"> Full-Stack Development</span>
+              Software Developer specializing in{" "}
+              <span className="text-accent font-semibold">
+                High-Performance Computing
+              </span>
+              ,
+              <span className="text-accent font-semibold"> AI Integration</span>
+              , and
+              <span className="text-accent font-semibold">
+                {" "}
+                Full-Stack Development
+              </span>
             </p>
 
-            <p className="text-lg text-blue-200/80 mb-12 font-body max-w-2xl mx-auto">
-              Texas A&M University • GPA: 3.80 • Available for Software Engineering roles
-            </p>
+            {/* <p className="text-lg text-blue-200/80 mb-12 font-body max-w-2xl mx-auto">
+              Texas A&M University • GPA: 3.80 • Available for Software
+              Engineering roles
+            </p> */}
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <Link to="/projects">

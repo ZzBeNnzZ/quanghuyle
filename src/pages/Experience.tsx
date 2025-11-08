@@ -6,11 +6,12 @@ import { Briefcase, MapPin, Calendar } from "lucide-react";
 const experiences = [
   {
     company: "Texas A&M High Performance Research Computing",
-    role: "Student Technician",
+    role: "HPC Consultant / Software Developer",
     location: "College Station, TX",
     period: "Feb. 2025 – Present",
     current: true,
     achievements: [
+      "Developed and optimized key components of the Drona Composer React-Flask platform, improving workflowefficiency and system scalability by 30%.",
       "Manage and resolve support tickets for HPRC researchers, and troubleshoot Linux environment issues to streamline researcher workflows",
       "Develop and maintain web-based resources to enhance HPRC's Knowledge Base and streamline user access to HPC documentation",
       "Implemented real-time output streaming in Drona Job Composer by integrating subprocess pipelines to capture and display live execution results in the UI, enhancing user feedback and tutorial interactivity",
@@ -47,7 +48,6 @@ const experiences = [
 const Experience = () => {
   return (
     <div className="min-h-screen bg-background">
-      
       <main className="container mx-auto px-6 py-32">
         <div className="max-w-5xl mx-auto">
           <div className="mb-16 animate-fade-in">
@@ -56,7 +56,8 @@ const Experience = () => {
             </h1>
             <div className="w-24 h-1 bg-accent" />
             <p className="text-lg text-muted-foreground mt-6 max-w-2xl">
-              My professional journey through high-performance computing, AI systems, and cybersecurity
+              My professional journey through high-performance computing, AI
+              systems, and cybersecurity
             </p>
           </div>
 
@@ -66,7 +67,11 @@ const Experience = () => {
 
             <div className="space-y-12">
               {experiences.map((exp, index) => (
-                <div key={index} className="relative animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                <div
+                  key={index}
+                  className="relative animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
                   {/* Timeline dot */}
                   <div className="absolute left-0 md:left-8 transform -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-background shadow-glow" />
 
@@ -84,7 +89,9 @@ const Experience = () => {
                         </h3>
                       </div>
                       {exp.current && (
-                        <Badge className="bg-accent text-white w-fit">Current Position</Badge>
+                        <Badge className="bg-accent text-white w-fit">
+                          Current Position
+                        </Badge>
                       )}
                     </div>
 
@@ -101,8 +108,13 @@ const Experience = () => {
 
                     <ul className="space-y-3 mb-6">
                       {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                          <span className="text-accent mt-1.5 flex-shrink-0">▪</span>
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-muted-foreground"
+                        >
+                          <span className="text-accent mt-1.5 flex-shrink-0">
+                            ▪
+                          </span>
                           <span className="leading-relaxed">{achievement}</span>
                         </li>
                       ))}
